@@ -11,6 +11,8 @@ services:
       - mysql_data:/var/lib/mysql
     ports:
       - "3306:3306"
+    networks:
+      - backend-network
 
   backend:
     build:
@@ -26,6 +28,8 @@ services:
       - "${PORT}:${PORT}"
     depends_on:
       - db
+    networks:
+      - backend-network
 
   nginx:
     image: nginx:latest
@@ -37,6 +41,12 @@ services:
       - "80:80"
     depends_on:
       - backend
+    networks:
+      - backend-network
+
+networks:
+  backend-network:
+    driver: bridge
 
 volumes:
   mysql_data:
