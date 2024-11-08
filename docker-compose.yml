@@ -21,7 +21,7 @@ services:
       DB_USER: ${DB_USER}
       DB_PASSWORD: ${DB_PASSWORD}
       DATABASE: ${DATABASE}
-      DB_HOST: db
+      DB_HOST: ${DB_HOST}
     ports:
       - "${PORT}:${PORT}"
     depends_on:
